@@ -1,0 +1,75 @@
+
+
+<div class="card">
+    <div class="mt-3" role="alert">
+        <h3 class="text-center alert bg-main text-light font-weight-bold">Cập nhật thông tin</h3>
+    </div>
+    <!-- Card body -->
+    <div class="card-body">
+
+        <!-- Material form register -->
+        <form class="validation" novalidate>
+            <!-- Material input text -->
+            <div class="md-form row">
+                <img src="/images/logos/ADAV.jpg" class="w-50 col-2" alt="">
+                <!-- <i class="fa fa-user prefix grey-text" style="font-size: 25pt; color: #ccc;"></i> -->
+                <input type="text" class="form-control col-6 mt-4" id="validationCustom01" placeholder="Tài khoản" value="Tantien"
+                    disabled>
+                    
+            </div><br>
+            <!-- Material input email -->
+            <div class="md-form">
+                <!-- <i class="fa fa-envelope prefix grey-text"></i> -->
+                <input type="text" class="form-control" id="fullName" placeholder="Họ và tên"
+                    required>
+            </div><br>
+            <div class="md-form">
+                <!-- <i class="fa fa-envelope prefix grey-text"></i> -->
+                <input type="email" class="form-control" id="validationEmail" placeholder="Email"
+                    required>
+            </div><br>
+            <!-- Material input password -->
+            <div class="md-form">
+                <select name="gender" id="gender" class="form-control">
+                    <option value="Nam">Nam</option>
+                    <option value="Nữ">Nữ</option>
+
+                </select>
+            </div><br>
+            <!-- Material input date -->
+            <div class="md-form">
+                <!-- <i class="fa fa-lock prefix grey-text"></i> -->
+                <input type="date" class="form-control" placeholder="dd/mm/yyyy" id="datepicker" required>
+            </div><br>
+            <div class="md-form">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="ngheNghiep">Nghề nghiệp</span>
+                </div>
+                <select class="browser-default custom-select">
+                    <option selected>Khác</option>
+                    <option value="Học sinh">Học sinh</option>
+                    <option value="Sinh viên">Sinh viên</option>
+                    <option value="Giáo viên">Giáo viên</option>
+                    <option value="Nhân viên">Nhân viên</option>
+                </select>
+            </div><br>
+            <div class="md-form">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupFileAddon01">Tải lên</span>
+                </div>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inputGroupFile01"
+                        aria-describedby="inputGroupFileAddon01">
+                    <label class="custom-file-label" for="inputGroupFile01">Ảnh đại diện</label>
+                </div>
+            </div>
+            <div class="text-center py-4 mt-3">
+                <button class="btn bg-main text-light waves-effect" id="buttonRegister" type="submit">Cập nhật thông tin</button>
+            </div>
+        </form>
+        <!-- Material form register -->
+
+    </div>
+    <!-- Card body -->
+
+</div>

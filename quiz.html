@@ -1,0 +1,100 @@
+<div ng-controller="quiz">
+    <div class="card">
+        <div class="row mx-1">
+            <li class="list-group-item {{ !checked && !start ? 'col-lg-12' : 'col-lg-9' }} bg-main active"><i class="fa fa-bars"></i> Lập trình Android nâng cao</li>
+            <p ng-show="!checked && start" class="col-lg-3 text-center pt-3">Thời gian: 10 phút</p>
+            <p ng-show="checked && start" class="col-lg-3 text-center pt-3" id="clock">10:00</p>
+
+        </div>
+        <div ng-show="checked">
+            <div>
+                <h5  class="px-2 pt-3">{{ indexQuiz }}. {{ quiz.Text }}</h5>
+                <form>
+                    <label ng-show="quiz.Answers[0].Id > 1" class="btn">
+                        <input type="radio" name="chooseAnswer" ng-model="chooseAnswer" value="{{ quiz.Answers[0].Id }}">{{ quiz.Answers[0].Text }}
+                    </label><br>
+                    <label ng-show="quiz.Answers[1].Id > 1" class="btn">
+                        <input  type="radio"name="chooseAnswer" ng-model="chooseAnswer" value="{{ quiz.Answers[1].Id }}">{{ quiz.Answers[1].Text }}
+                    </label><br>
+                    <label ng-show="quiz.Answers[2].Id > 1" class="btn">
+                        <input type="radio" name="chooseAnswer" ng-model="chooseAnswer" value="{{ quiz.Answers[2].Id }}">{{ quiz.Answers[2].Text }}
+                    </label><br>
+                    <label ng-show="quiz.Answers[3].Id > 1" class="btn">
+                        <input type="radio" name="chooseAnswer" ng-model="chooseAnswer" value="{{ quiz.Answers[3].Id }}">{{ quiz.Answers[3].Text  }}
+                    </label>
+                    <label ng-show="quiz.Answers[4].Id > 1" class="btn">
+                        <input type="radio" name="chooseAnswer" ng-model="chooseAnswer" value="{{ quiz.Answers[4].Id }}">{{ quiz.Answers[3].Text  }}
+                    </label>
+                    <label ng-show="quiz.Answers[5].Id > 1" class="btn">
+                        <input type="radio" name="chooseAnswer" ng-model="chooseAnswer" value="{{ quiz.Answers[5].Id }}">{{ quiz.Answers[3].Text  }}
+                    </label>
+                    
+                </form>
+                {{ chooseAnswer }}
+                
+            </div>
+        </div>
+        <hr>
+        <div ng-show="!checked" class="text-center">
+            <button ng-show="start" class="col-sm-3 btn bg-main text-light" ng-click="startGame()">Bắt đầu</button>
+            <button ng-show="!start && hiddenResult" class="col-sm-3 btn bg-main text-light" ng-click="showResultMethod()">Xem kết quả</button>
+
+        </div>
+        <div ng-show="checked" class="row mx-1">
+            <p class=" col-lg-9 bg-dafault text-dark"><i class="fa fa-scope"></i>Hoàn thành: {{ index }}/{{ total }} </p>
+            <button class="col-lg-3 btn bg-main text-light  {{ chooseAnswer > 1 ? '' : 'disabled' }}" ng-click="nextQuestion()">{{ titleButton }}</button>
+        </div>
+        <br>
+        <div ng-show="showResult">
+            <h3 class="text-center">KẾT QUẢ</h3>
+            <h6>Tổng số câu đúng:  <span class="text-success">{{ markTotal }}/ {{ total }} .</span></h5>
+            <div ng-repeat="answer in result" class="row px-3 pb-3">
+                <div class="col-12 py-2 {{ answer.status ? 'bg-success' : 'bg-danger' }}">
+                        <div class="row">
+                            <div class="col-sm-6 text-light">                        
+                                <p>{{ $index + 1 }}. {{ answer.question }}</p>
+                            </div>
+                        <div class="col-sm-6">
+                            <!-- Button trigger modal -->
+                        <div class="float-right">
+                            <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#modal{{ $index + 1 }}">
+                                Chi tiết
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="modal{{ $index + 1 }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">{{ $index + 1 }}. {{ answer.question }}</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    </div>
+                                    <div class="modal-body">
+                                    <p 
+                                        ng-repeat="an in answer.Answers" 
+                                        class="alert
+                                        {{ an.Id == answer.idYouChoose && answer.idSuccess == answer.idYouChoose ? 'bg-success': '' }}
+                                        {{ an.Id == answer.idYouChoose && answer.idSuccess != answer.idYouChoose ? 'bg-danger': '' }}
+                                        {{ an.Id == answer.idSuccess ? 'bg-success' : '' }}
+
+                                        "
+                                    >
+                                        {{ $index + 1 }}. {{ an.Text }}
+                                    </p>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn bg-main text-light" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

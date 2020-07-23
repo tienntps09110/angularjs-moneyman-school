@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>NGUYỄN TẤN TIỀN</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/angular.min.js"></script>
+  <script src="js/angular-route.js"></script>
+  <script src="db/Students.js"></script>
+  <script src="db/Subjects.js"></script>
+  <script src="db/Quizs/ADAV.js"></script>
+  <script src="db/Quizs/ADBS.js"></script>
+  <script src="db/Quizs/ADUI.js"></script>
+  <script src="db/Quizs/ADTE.js"></script>
+  <script src="db/Quizs/ASNE.js"></script>
+  <script src="db/Quizs/CLCO.js"></script>
+  <script src="db/Quizs/DBAV.js"></script>
+  <script src="db/Quizs/DBBS.js"></script>
+  <script src="db/Quizs/GAME.js"></script>
+  <script src="db/Quizs/HTCS.js"></script>
+  <script src="db/Quizs/INMA.js"></script>
+  <script src="db/Quizs/JAAV.js"></script>
+  <script src="db/Quizs/JABS.js"></script>
+  <script src="db/Quizs/JSPR.js"></script>
+  <script src="db/Quizs/LAYO.js"></script>
+  <script src="db/Quizs/MOWE.js"></script>
+  <script src="db/Quizs/PHPP.js"></script>
+  <script src="db/Quizs/PMAG.js"></script>
+  <script src="db/Quizs/Template.js"></script>
+  <script src="db/Quizs/VBPR.js"></script>
+  <script src="db/Quizs/WEBU.js"></script>
+  <script src="db/Quizs/TEST.js"></script>
+
+
+</head>
+
+<body ng-app="app">
+  <!-- Page Content -->
+  <div class="container">
+    
+    <div ng-include="'/layout/header.html'"></div>
+
+    <div class="row my-3">
+      <div class="col-sm-12 col-md-12">
+        <!-- Page Heading -->
+      
+      <!-- Start ng-view -->
+      <h2=>{{ loading }}</h2>
+      <ng-view>
+      <!-- End ng-view -->
+
+      </div>
+      <!-- <div class="col-sm-12 col-md-3">
+        <div ng-include="'/layout/category.html'"></div>
+      </div> -->
+    </div>
+  </div>
+  <!-- /.container -->
+  <footer class="bg-dark py-4">
+    <p class="text-center text-white">PS09110 - Nguyễn Tấn Tiền <br> tienntps09110@fpt.edu.vn</p>
+  </footer>
+  <script>
+    const app = angular.module('app', ['ngRoute'])
+      .config(($routeProvider)=> {
+        $routeProvider
+        .when("/introduce", {templateUrl: "introduce.html"})
+        .when("/contact", {templateUrl: "contact.html"})
+        .when("/feedback", {templateUrl: "feedback.html"})
+        .when("/question", {templateUrl: "question-answer.html"})
+        .when("/category/:page", {templateUrl: "category.html"})
+        .when("/login", {templateUrl: "login.html"})
+        .when("/register", {templateUrl: "register.html"})
+        .when("/change-password", {templateUrl: "change-password.html"})
+        .when("/update-user", {templateUrl: "update-user.html"})
+        .when("/quiz/:code", {templateUrl: "quiz.html"})
+
+
+
+
+
+
+
+      })
+      .run(($rootScope)=> {
+        $rootScope.$on('$routeChangeStart', ()=> { console.log() });
+        $rootScope.$on('$routeChangeSuccess', ()=> { console.log() });
+        $rootScope.$on('$routeChangeError', ()=> { $rootScope.loading = 'Lỗi, vui lòng tải lại trang'; });
+      })
+  </script>
+  <!-- Import controller -->
+  <div>
+    <script src="js/controller/change-password.js"></script>
+    <script src="js/controller/contact.js"></script>
+    <script src="js/controller/feedback.js"></script>
+    <script src="js/controller/login.js"></script>
+    <script src="js/controller/question.js"></script>
+    <script src="js/controller/register.js"></script>
+    <script src="js/controller/update-user.js"></script>
+    <script src="js/controller/category.js"></script>
+    <script src="js/controller/quiz.js"></script>
+
+  </div>
+
+</body>
+
+</html>
+
+<script src="js/jquery-3.3.1.min.js"> </script>
+<script src="js/popper.min.js"> </script>
+<script src="js/bootstrap.min.js"> </script>
+

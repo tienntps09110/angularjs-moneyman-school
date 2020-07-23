@@ -1,0 +1,41 @@
+<div class="alert bg-main text-light text-center">
+    <h3>Danh mục</h3>
+</div>
+<div ng-controller="category" class="card" style="border: unset;">
+    <div class="row">
+        <div  ng-repeat="subject in subjectsPage" class="col-lg-6 col-sm-6 mb-4">
+          <div class="card h-100">
+            <a href="#/quiz/{{ subject.Id }}" class="text-center"><img class="card-img-top w-50" src="/images/logos/{{  subject.Logo }}" alt="{{  subject.Name }}"></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <h5 class="card-title">{{  subject.Name }}</h5>
+                <br>
+                <a href="#/quiz/{{ subject.Id }}" class="btn bg-main text-light float-right" 
+                    style="position: absolute;bottom: 4px; right: 4px;"
+                >Xem chi tiết</a>
+              </h4>
+            </div>
+          </div>
+        </div>
+    </div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+          <li class="page-item {{ afterPage.checked() ? 'disabled' : '' }}">
+            <a class="page-link" href="#/category/{{ afterPage.page  }}" tabindex="-1" aria-disabled="true">Trước</a>
+          </li>
+
+          <li 
+            ng-repeat="pagi in pagination track by $index" 
+            class="page-item {{ $index + 1 == page ? 'active': '' }}"
+          >
+            <a class="page-link" href="#/category/{{ $index + 1 }}">
+              {{ $index + 1 }}
+            </a>
+          </li>
+          
+          <li class="page-item {{ beforePage.checked()  ? 'disabled' : '' }}">
+            <a class="page-link" href="#/category/{{ beforePage.page  }}">Sau</a>
+          </li>
+        </ul>
+      </nav>
+</div>

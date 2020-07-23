@@ -1,0 +1,12 @@
+<!-- START ACC -->
+<ul ng-controller="categoryLayout" class="list-group">
+  <li class="list-group-item bg-main active"><i class="fa fa-bars"></i> DANH MỤC</li>
+
+  <li ng-repeat="subject in subjects" class="list-group-item">
+    <a class="nav-link text-dark" href="#/quiz/{{ subject.Id }}">
+      {{ $index + 1 }}. {{ subject.Name }}
+    </a>
+  </li>
+  
+</ul>
+<!-- END ACC -->
