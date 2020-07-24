@@ -1,34 +1,24 @@
-<div class="row">
+<div ng-controller="login" class="row">
     <div class="col-sm-9 col-md-7 col-lg-7 mx-auto">
       <div class="card card-signin mb-5">
         <div class="card-body">
           <h4 class="card-title text-center alert bg-main text-light">Đăng nhập</h4>
           <form class="form-signin validation" novalidate>
             <div class="form-label-group">
-              <input type="Username" id="inputUsername" class="form-control" placeholder="Tài khoản" required autofocus>
-              <div class="valid-feedback">
-                Khả dụng
-              </div>
-              <div class="invalid-feedback">
-                Không được bỏ trống
-              </div>
+              <input type="Username" id="inputUsername" class="form-control" ng-model="user_name" placeholder="Tài khoản" required autofocus>
             </div>
             <br>
             <div class="form-label-group">
-              <input type="password" id="inputPassword" class="form-control" placeholder="Mật khẩu" required>
-              <div class="valid-feedback">
-                Khả dụng
-              </div>
-              <div class="invalid-feedback">
-                Không được bỏ trống
-              </div>
+              <input type="password" id="inputPassword" class="form-control" ng-model="password" placeholder="Mật khẩu" required>
             </div>
   
             <div class="custom-control custom-checkbox my-3">
               <input type="checkbox" class="custom-control-input" id="customCheck1">
               <label class="custom-control-label" for="customCheck1">Nhớ</label>
             </div>
-            <button class="btn-block text-uppercase btn bg-main text-light waves-effect" type="submit">Đăng nhập</button>
+            <button class="btn-block text-uppercase btn bg-main text-light waves-effect" ng-click="login()" type="submit">Đăng nhập</button>
+            <br>
+            <div class="alert {{ error.className }}"><p class="text-center font-weight-bold">{{ error.text }}</p></div>
           </form>
         </div>
       </div>

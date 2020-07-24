@@ -1,4 +1,5 @@
 app.controller('quiz', ($scope, $rootScope, $routeParams)=> {
+    $rootScope.checkedColQuiz = true;
     $rootScope.scope = 0;
     $scope.checked = false;
     $rootScope.index = 0;
@@ -12,7 +13,13 @@ app.controller('quiz', ($scope, $rootScope, $routeParams)=> {
     $scope.timeCountDown = 0;
     let code = $routeParams.code;
     let quiz = window[code];
-    
+    let checkLogin  = localStorage.getItem('user_name');
+    console.log(checkLogin);
+    if(checkLogin.length == 0){
+        window.location.href = "#/";
+    }
+    $scope.nameQuiz = Subjects.filter(subject => subject.Id == code);
+
     $rootScope.total = quiz.length;
     $rootScope.markTotal = 0;
 

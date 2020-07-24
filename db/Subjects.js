@@ -1,22 +1,7 @@
 var Subjects = [
     {
         "Id": "TEST",
-        "Name": "MÔN TEST",
-        "Logo": "WEBU.jpg"
-    },
-    {
-        "Id": "TE2ST",
-        "Name": "MÔN TEST",
-        "Logo": "WEBU.jpg"
-    },
-    {
-        "Id": "TES4T",
-        "Name": "MÔN TEST",
-        "Logo": "WEBU.jpg"
-    },
-    {
-        "Id": "TE6ST",
-        "Name": "MÔN TEST",
+        "Name": "MÔN TEST NÈ",
         "Logo": "WEBU.jpg"
     },
     {

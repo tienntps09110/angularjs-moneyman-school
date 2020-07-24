@@ -1,37 +1,35 @@
 <div ng-controller="quiz">
-    <div class="card">
+    <div class="card p-2">
         <div class="row mx-1">
-            <li class="list-group-item {{ !checked && !start ? 'col-lg-12' : 'col-lg-9' }} bg-main active"><i class="fa fa-bars"></i> Lập trình Android nâng cao</li>
+            <p class="alert {{ !checked && !start ? 'col-lg-12' : 'col-lg-9' }} bg-main text-light active"><i class="fa fa-bars"></i>
+            {{ nameQuiz[0].Name }}</p>
             <p ng-show="!checked && start" class="col-lg-3 text-center pt-3">Thời gian: 10 phút</p>
             <p ng-show="checked && start" class="col-lg-3 text-center pt-3" id="clock">10:00</p>
-
         </div>
         <div ng-show="checked">
             <div>
                 <h5  class="px-2 pt-3">{{ indexQuiz }}. {{ quiz.Text }}</h5>
                 <form>
                     <label ng-show="quiz.Answers[0].Id > 1" class="btn">
-                        <input type="radio" name="chooseAnswer" ng-model="chooseAnswer" value="{{ quiz.Answers[0].Id }}">{{ quiz.Answers[0].Text }}
+                        <input type="radio" name="chooseAnswer" ng-model="chooseAnswer" value="{{ quiz.Answers[0].Id }}"> {{ quiz.Answers[0].Text }}
                     </label><br>
                     <label ng-show="quiz.Answers[1].Id > 1" class="btn">
-                        <input  type="radio"name="chooseAnswer" ng-model="chooseAnswer" value="{{ quiz.Answers[1].Id }}">{{ quiz.Answers[1].Text }}
+                        <input  type="radio"name="chooseAnswer" ng-model="chooseAnswer" value="{{ quiz.Answers[1].Id }}"> {{ quiz.Answers[1].Text }}
                     </label><br>
                     <label ng-show="quiz.Answers[2].Id > 1" class="btn">
-                        <input type="radio" name="chooseAnswer" ng-model="chooseAnswer" value="{{ quiz.Answers[2].Id }}">{{ quiz.Answers[2].Text }}
+                        <input type="radio" name="chooseAnswer" ng-model="chooseAnswer" value="{{ quiz.Answers[2].Id }}"> {{ quiz.Answers[2].Text }}
                     </label><br>
                     <label ng-show="quiz.Answers[3].Id > 1" class="btn">
-                        <input type="radio" name="chooseAnswer" ng-model="chooseAnswer" value="{{ quiz.Answers[3].Id }}">{{ quiz.Answers[3].Text  }}
+                        <input type="radio" name="chooseAnswer" ng-model="chooseAnswer" value="{{ quiz.Answers[3].Id }}"> {{ quiz.Answers[3].Text  }}
                     </label>
                     <label ng-show="quiz.Answers[4].Id > 1" class="btn">
-                        <input type="radio" name="chooseAnswer" ng-model="chooseAnswer" value="{{ quiz.Answers[4].Id }}">{{ quiz.Answers[3].Text  }}
+                        <input type="radio" name="chooseAnswer" ng-model="chooseAnswer" value="{{ quiz.Answers[4].Id }}"> {{ quiz.Answers[3].Text  }}
                     </label>
                     <label ng-show="quiz.Answers[5].Id > 1" class="btn">
                         <input type="radio" name="chooseAnswer" ng-model="chooseAnswer" value="{{ quiz.Answers[5].Id }}">{{ quiz.Answers[3].Text  }}
                     </label>
                     
                 </form>
-                {{ chooseAnswer }}
-                
             </div>
         </div>
         <hr>

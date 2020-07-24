@@ -1,9 +1,13 @@
 app.controller('category', ($scope, $rootScope, $routeParams) => {
+    $rootScope.checkedColQuiz = false;
     const onePage = 4;
     $scope.subjectsPage = [];
     $scope.page = parseInt($routeParams.page);
-    $scope.pagination = Array(Subjects.length / onePage).fill({});
-    
+    $scope.pagination = Array(Math.ceil(Subjects.length / onePage)).fill({});
+    if(localStorage.getItem('user_name') == null){
+        window.location.href = "#/login";
+        return;
+    }
     var page = parseInt($scope.page);
     let itemStart = (page - 1) * onePage;
     let itemEnd = itemStart + 1;

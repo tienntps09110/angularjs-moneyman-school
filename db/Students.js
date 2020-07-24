@@ -30,7 +30,7 @@
         "marks": "0"
     },
     {
-        "username": "tien",
+        "username": "tiennt",
         "password": "1",
         "fullname": "Nguyễn Tấn Tiền",
         "email": "nopt@fpt.edu.vn",

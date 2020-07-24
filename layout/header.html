@@ -1,51 +1,50 @@
-<!-- START HEADER -->
-<header class="row">
-    <img class="ml-auto w-100" src="images/banner.png">
-  </header>
-  <!-- END HEADER -->
-
-  <!-- START NAV -->
-  <nav class="row">
-    <nav class="navbar navbar-expand-lg bg-main-v2 bg-light w-100">
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto w-100">
-          <li class="nav-item active">
-            <a class="nav-link  text-light" href="#">Trang chủ <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link  text-light" href="#/introduce">Giới thiệu</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link  text-light" href="#/contact">Liên hệ</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link  text-light" href="#/feedback">Góp ý</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link  text-light" href="#/question">Hỏi đáp</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link  text-light" href="#/category/1">Danh mục</a>
-          </li>
-          <li class="nav-item dropdown ml-auto">
-            <a class="nav-link text-light dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false" style="cursor: pointer;">
-              Tài khoản
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#/login">Đăng nhập</a>
-              <a class="dropdown-item" href="#/register">Đăng ký thành viên</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#/logout">Đăng xuất</a>
-              <a class="dropdown-item" href="#/change-password">Đổi mật khẩu</a>
-              <a class="dropdown-item" href="#/update-user">Cập nhật hồ sơ</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Đơn hàng</a>
-              <a class="dropdown-item" href="#">Hàng đã mua</a>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </nav>
-  <!-- END NAV -->
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-main fixed-top">
+  <div class="container">
+    <a class="navbar-brand col-sm-3" href="#/">
+      <img style="width: 100%;" src="/images/bg-fff.PNG" alt="BANNER">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav mr-auto w-100">
+        <li class="nav-item active">
+          <a class="nav-link  text-light" href="#/">Trang chủ <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  text-light" href="#/contact">Liên hệ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  text-light" href="#/feedback">Góp ý</a>
+        </li>
+        <li ng-show="userNameLoginSuccess" class="nav-item">
+          <a class="nav-link  text-light" href="#/question">Hỏi đáp</a>
+        </li>
+        <li ng-show="userNameLoginSuccess" class="nav-item">
+          <a class="nav-link  text-light" href="#/category/1">Danh mục</a>
+        </li>
+        <li class="nav-item dropdown ml-auto">
+          <a class="nav-link text-light dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" style="cursor: pointer;">
+            {{ userNameLoginSuccess.length > 0 ? userNameLoginSuccess: 'Tài khoản' }}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a ng-show="!userNameLoginSuccess" class="dropdown-item" href="#/login">Đăng nhập</a>
+            <a ng-show="!userNameLoginSuccess" class="dropdown-item" href="#/register">Đăng ký thành viên</a>
+            <div ng-show="!userNameLoginSuccess" class="dropdown-divider"></div>
+            <a ng-show="userNameLoginSuccess" style="cursor: pointer;" class="dropdown-item" ng-click="logout()">Đăng xuất</a>
+            <a ng-show="userNameLoginSuccess" class="dropdown-item" href="#/change-password">Đổi mật khẩu</a>
+            <a ng-show="userNameLoginSuccess" class="dropdown-item" href="#/update-user">Cập nhật hồ sơ</a>
+            <!-- <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Đơn hàng</a>
+            <a class="dropdown-item" href="#">Hàng đã mua</a> -->
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Page Content -->
+<section class="py-4 mb-5"></section>

@@ -1,19 +1,18 @@
-<div class="alert bg-main text-light text-center">
+<!-- <div class="alert bg-main text-light text-center">
     <h3>Danh mục</h3>
-</div>
-<div ng-controller="category" class="card" style="border: unset;">
+</div> -->
+<div ng-controller="category" class="card p-2">
+  <p class="text-center w-responsive mx-auto mb-5 h4">DANH MỤC</p>
     <div class="row">
-        <div  ng-repeat="subject in subjectsPage" class="col-lg-6 col-sm-6 mb-4">
-          <div class="card h-100">
-            <a href="#/quiz/{{ subject.Id }}" class="text-center"><img class="card-img-top w-50" src="/images/logos/{{  subject.Logo }}" alt="{{  subject.Name }}"></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <h5 class="card-title">{{  subject.Name }}</h5>
-                <br>
-                <a href="#/quiz/{{ subject.Id }}" class="btn bg-main text-light float-right" 
-                    style="position: absolute;bottom: 4px; right: 4px;"
-                >Xem chi tiết</a>
-              </h4>
+        <!-- CARD TWO -->
+        <div ng-repeat="subject in subjectsPage" class="col-xl-3 col-md-6 mb-4">
+          <div class="card h-100 border-0 shadow">
+            <a href="#/quiz/{{ subject.Id }}">
+              <img src="/images/logos/{{  subject.Logo }}" alt="{{  subject.Name }}" class="card-img-top w-55">
+            </a>
+            <div class="card-body text-center">
+              <h5 class="card-title mb-0">{{  subject.Name }}</h5>
+              <div class="card-text text-black-50">Mã môn: {{ subject.Id }}</div>
             </div>
           </div>
         </div>

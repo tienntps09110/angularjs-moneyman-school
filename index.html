@@ -6,7 +6,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+  <!-- <base href="/" /> -->
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -14,6 +14,7 @@
   <script src="js/angular.min.js"></script>
   <script src="js/angular-route.js"></script>
   <script src="db/Students.js"></script>
+  <script src="db/Questions.js"></script>
   <script src="db/Subjects.js"></script>
   <script src="db/Quizs/ADAV.js"></script>
   <script src="db/Quizs/ADBS.js"></script>
@@ -43,12 +44,11 @@
 
 <body ng-app="app">
   <!-- Page Content -->
-  <div class="container">
+  <div ng-controller="app" class="container">
     
     <div ng-include="'/layout/header.html'"></div>
-
     <div class="row my-3">
-      <div class="col-sm-12 col-md-12">
+      <div class="col-sm-12 {{ checkedColQuiz == false ? 'col-md-12' : 'col-md-9' }}  mt-3">
         <!-- Page Heading -->
       
       <!-- Start ng-view -->
@@ -57,9 +57,9 @@
       <!-- End ng-view -->
 
       </div>
-      <!-- <div class="col-sm-12 col-md-3">
+      <div ng-show="checkedColQuiz" class="col-sm-12 col-md-3">
         <div ng-include="'/layout/category.html'"></div>
-      </div> -->
+      </div>
     </div>
   </div>
   <!-- /.container -->
@@ -68,8 +68,9 @@
   </footer>
   <script>
     const app = angular.module('app', ['ngRoute'])
-      .config(($routeProvider)=> {
+      .config(($routeProvider, $locationProvider)=> {
         $routeProvider
+        .when("/", {templateUrl: "introduce.html"})
         .when("/introduce", {templateUrl: "introduce.html"})
         .when("/contact", {templateUrl: "contact.html"})
         .when("/feedback", {templateUrl: "feedback.html"})
@@ -79,7 +80,9 @@
         .when("/register", {templateUrl: "register.html"})
         .when("/change-password", {templateUrl: "change-password.html"})
         .when("/update-user", {templateUrl: "update-user.html"})
-        .when("/quiz/:code", {templateUrl: "quiz.html"})
+        .when("/quiz/:code", {templateUrl: "quiz.html"});
+
+        // $locationProvider.html5Mode(true);
 
 
 
@@ -93,6 +96,15 @@
         $rootScope.$on('$routeChangeSuccess', ()=> { console.log() });
         $rootScope.$on('$routeChangeError', ()=> { $rootScope.loading = 'Lỗi, vui lòng tải lại trang'; });
       })
+      .controller('app', ($scope, $rootScope)=> {
+        $rootScope.userNameLoginSuccess = localStorage.getItem('user_name');
+        
+        $scope.logout = ()=> {
+          localStorage.removeItem('user_name');
+          $rootScope.userNameLoginSuccess = '';
+          window.location.href = "#/login";
+        }
+      })
   </script>
   <!-- Import controller -->
   <div>
@@ -105,6 +117,9 @@
     <script src="js/controller/update-user.js"></script>
     <script src="js/controller/category.js"></script>
     <script src="js/controller/quiz.js"></script>
+    <script src="js/controller/introduce.js"></script>
+
+
 
   </div>
 
