@@ -6,40 +6,50 @@
     </div>
     <!-- Card body -->
     <div class="card-body">
-        <div class="alert {{ error.className }}"><p class="text-center font-weight-bold">{{ error.text }}</p></div>
 
         <!-- Material form register -->
-        <form class="validation" novalidate>
+        <form class="validation" name="formUpdate" novalidate>
             <!-- Material input text -->
             <div class="md-form row">
                 <img src="/images/logos/ADAV.jpg" class="w-50 col-2" alt="">
                 <!-- <i class="fa fa-user prefix grey-text" style="font-size: 25pt; color: #ccc;"></i> -->
                 <input type="text" class="form-control col-6 mt-4" id="validationCustom01" placeholder="Tài khoản" ng-value="user.user_name"
                     disabled>
-                    
             </div><br>
             <!-- Material input email -->
             <div class="md-form">
                 <!-- <i class="fa fa-envelope prefix grey-text"></i> -->
-                <input type="text" class="form-control" ng-value="user.full_name" id="fullName" placeholder="Họ và tên"
+                <input type="text" class="form-control" name="fullname" ng-model="user.fullname"  ng-value="user.fullname" id="fullName" placeholder="Họ và tên"
                     required>
+                <div ng-show="formUpdate.fullname.$error.required && !formUpdate.fullname.$untouched" class="badge badge-danger font-italic">
+                    Không để trống họ và tên
+                </div>
             </div><br>
             <div class="md-form">
                 <!-- <i class="fa fa-envelope prefix grey-text"></i> -->
-                <input type="email" class="form-control" ng-value="user.email" id="validationEmail" placeholder="Email"
+                <input type="email" class="form-control" name="email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" ng-model="user.email" ng-value="user.email" id="validationEmail" placeholder="Email"
                     required>
+                <div ng-show="formUpdate.email.$error.required && !formUpdate.email.$untouched" class="badge badge-danger font-italic">
+                    Nhập email của bạn
+                </div>
+                <div ng-show="formUpdate.email.$error.pattern  && !formUpdate.email.$untouched" class="badge badge-danger font-italic">
+                    Vui lòng nhập đúng định dạng email
+                </div>
             </div><br>
             <!-- Material input password -->
             <div class="md-form">
-                <select name="gender" id="gender" class="form-control">
-                    <option value="Nam">Nam</option>
-                    <option value="Nữ">Nữ</option>
+                <select name="gender" ng-model="user.gender" id="gender" class="form-control">
+                    <option value="true">Nam</option>
+                    <option value="false">Nữ</option>
                 </select>
             </div><br>
             <!-- Material input date -->
             <div class="md-form">
                 <!-- <i class="fa fa-lock prefix grey-text"></i> -->
-                <input type="text" class="form-control" ng-value="user.birthday" placeholder="dd/mm/yyyy" id="datepicker" required>
+                <input type="text" name="date" ng-model="user.birthday" class="form-control" ng-value="user.birthday" placeholder="dd/mm/yyyy" id="datepicker" required>
+                <div ng-show="formUpdate.date.$error.required  && !formUpdate.date.$untouched" class="badge badge-danger font-italic">
+                    Nhập ngày sinh của bạn
+                </div>
             </div><br>
             <div class="md-form">
                 <div class="input-group-prepend">
@@ -64,8 +74,10 @@
                 </div>
             </div>
             <div class="text-center py-4 mt-3">
-                <button class="btn bg-main text-light waves-effect" ng-click="save()" id="buttonRegister" type="submit">Cập nhật thông tin</button>
+                <button class="btn bg-main text-light waves-effect" ng-click="save()" id="buttonRegister" ng-disabled="formUpdate.$invalid" type="submit">Cập nhật thông tin</button>
             </div>
+            <br>        
+            <div class="alert {{ error.className }}"><p class="text-center font-weight-bold">{{ error.text }}</p></div>
         </form>
         <!-- Material form register -->
 

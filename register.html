@@ -7,57 +7,60 @@
     <div class="card-body">
 
         <!-- Material form register -->
-        <form class="validation" novalidate>
+        <form class="validation" name="formRegister" novalidate>
             <!-- Material input text -->
             <div class="md-form">
                 <!-- <i class="fa fa-user prefix grey-text" style="font-size: 25pt; color: #ccc;"></i> -->
-                <input type="text" class="form-control" id="validationCustom01" placeholder="Tài khoản" value=""
+                <input type="text" ng-pattern="/^[a-zA-Z0-9-]*$/" name="user_name" ng-model="user_name" class="form-control" id="user_name" placeholder="Tài khoản" value=""
                     required>
+                <div ng-show="formRegister.user_name.$error.required  && !formRegister.user_name.$untouched" class="badge badge-danger font-italic">
+                    Nhập tài khoản của bạn
+                </div>
+                <div ng-show="formRegister.user_name.$error.pattern  && !formRegister.user_name.$untouched" class="badge badge-danger font-italic">
+                    Vui lòng nhập đúng định dạng tài khoản
+                </div>
             </div><br>
             <!-- Material input email -->
             <div class="md-form">
                 <!-- <i class="fa fa-envelope prefix grey-text"></i> -->
-                <input type="email" class="form-control" id="validationEmail" placeholder="Email"
+                <input type="email" name="email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" ng-model="email" class="form-control" id="validationEmail" placeholder="Email"
                     required>
-                <div class="valid-feedback">
-                    Email khả dụng
+                <div ng-show="formRegister.email.$error.required && !formRegister.email.$untouched" class="badge badge-danger font-italic">
+                    Nhập email của bạn
                 </div>
-                <div class="invalid-feedback">
-                    Không được bỏ trống
+                <div ng-show="formRegister.email.$error.pattern  && !formRegister.email.$untouched" class="badge badge-danger font-italic">
+                    Vui lòng nhập đúng định dạng email
                 </div>
             </div><br>
             <!-- Material input password -->
             <div class="md-form">
                 <!-- <i class="fa fa-lock prefix grey-text"></i> -->
-                <input type="password" class="form-control" id="validationPassword" placeholder="Mật khẩu"
+                <input type="password" name="password" ng-model="password" ng-minLength="6" class="form-control" id="validationPassword" placeholder="Mật khẩu"
                     required>
-                <div class="valid-feedback">
-                    Mật khẩu khả dụng
+                <div ng-show="formRegister.password.$error.required  && !formRegister.password.$untouched" class="badge badge-danger font-italic">
+                    Nhập mật khẩu của bạn
                 </div>
-                <div class="invalid-feedback">
-                    Không được bỏ trống
+                <div ng-show="formRegister.password.$error.minlength  && !formRegister.password.$untouched" class="badge badge-danger font-italic">
+                    Vui lòng nhập mật khẩu trên sáu kí tự
                 </div>
             </div><br>
             <!-- Material input password -->
             <div class="md-form">
                 <!-- <i class="fa fa-lock prefix grey-text"></i> -->
-                <input type="password" class="form-control" id="validationConfirmPassword" placeholder="Xác nhận mật khẩu" required>
-                <div class="valid-feedback">
-                    Xác nhận mật khẩu khả dụng
+                <input type="password" name="confirmPassword" ng-model="confirmPassword" ng-minLength="6" class="form-control" id="validationConfirmPassword" placeholder="Xác nhận mật khẩu" required>
+                <div ng-show="formRegister.confirmPassword.$error.required  && !formRegister.confirmPassword.$untouched" class="badge badge-danger font-italic">
+                    Nhập lại mật khẩu của bạn
                 </div>
-                <div class="invalid-feedback">
-                    Không được bỏ trống
+                <div ng-show="formRegister.confirmPassword.$error.minlength  && !formRegister.confirmPassword.$untouched" class="badge badge-danger font-italic">
+                    Vui lòng nhập lại mật khẩu trên sáu kí tự
                 </div>
             </div><br>
             <!-- Material input date -->
             <div class="md-form">
                 <!-- <i class="fa fa-lock prefix grey-text"></i> -->
-                <input type="date" class="form-control" placeholder="dd/mm/yyyy" id="datepicker" required>
-                <div class="valid-feedback">
-                   Hợp lệ
-                </div>
-                <div class="invalid-feedback">
-                    Vui lòng điền ngày sinh của bạn
+                <input type="date" name="date" ng-model="date" class="form-control" placeholder="dd/mm/yyyy" id="datepicker" required>
+                <div ng-show="formRegister.date.$error.required  && !formRegister.date.$untouched" class="badge badge-danger font-italic">
+                    Nhập ngày sinh của bạn
                 </div>
             </div><br>
             <div class="md-form">
@@ -83,8 +86,10 @@
                 </div>
             </div>
             <div class="text-center py-4 mt-3">
-                <button class="btn bg-main text-light waves-effect" id="buttonRegister" type="submit">Đăng kí thành viên</button>
+                <button class="btn bg-main text-light waves-effect" id="buttonRegister" ng-click="register()" ng-disabled="formRegister.$invalid" type="submit">Đăng kí thành viên</button>
             </div>
+            <br>
+            <div class="alert {{ error.className }}"><p class="text-center font-weight-bold">{{ error.text }}</p></div>
         </form>
         <!-- Material form register -->
 

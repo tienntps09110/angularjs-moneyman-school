@@ -101,6 +101,8 @@
         
         $scope.logout = ()=> {
           localStorage.removeItem('user_name');
+          localStorage.removeItem('index_user');
+
           $rootScope.userNameLoginSuccess = '';
           window.location.href = "#/login";
         }

@@ -11,18 +11,23 @@ app.controller('login', ($scope, $rootScope)=> {
             $scope.notification('Vui lòng không để trống tài khoản và mật khẩu');
             return;
         }
-        let userLogin = Students.filter(student =>{
+        var checkLogin = true;
+        let userLogin = Students.filter( (student, index) =>{
             if($scope.user_name == student.username && $scope.password == student.password){
                 localStorage.setItem('user_name', $scope.user_name);
+                localStorage.setItem('index_user', index);
+                
                 $rootScope.userNameLoginSuccess = $scope.user_name;
                 window.location.href = "#/";
-                $scope.notification('Đăng nhập thành công', 'alert-success');
                 return;
             }
         });
+        if(checkLogin){
+            $scope.notification('Tài khoản hoặc mật khẩu không chính xác');
+        }
 
-        console.log(userLogin);
-        console.log([$scope.user_name, $scope.password]);
+        // console.log(userLogin);
+        // console.log([$scope.user_name, $scope.password]);
     }
     $scope.notification = (text = '', className = 'alert-danger', checked = false)=> {
         $scope.error = {
