@@ -3,20 +3,32 @@
       <div class="card card-signin mb-5">
         <div class="card-body">
           <h4 class="card-title text-center alert bg-main text-light">Đăng nhập</h4>
-          <form class="form-signin validation" novalidate>
+          <form class="form-signin validation" name="formLogin" novalidate>
             <div class="form-label-group">
-              <input type="Username" id="inputUsername" class="form-control" ng-model="user_name" placeholder="Tài khoản" required autofocus>
+              <input type="Username" ng-pattern="/^[a-zA-Z0-9-]*$/" id="inputUsername" name="user_name" class="form-control" ng-model="user_name" placeholder="Tài khoản" required autofocus>
+              <div ng-show="formLogin.user_name.$error.required" class="badge badge-danger font-italic">
+                Nhập tài khoản của bạn
+              </div>
+              <div ng-show="formLogin.user_name.$error.pattern" class="badge badge-danger font-italic">
+                Vui lòng nhập đúng định dạng tài khoản
+              </div>
             </div>
             <br>
             <div class="form-label-group">
-              <input type="password" id="inputPassword" class="form-control" ng-model="password" placeholder="Mật khẩu" required>
+              <input type="password" id="inputPassword" ng-minLength="1" name="pass" class="form-control" ng-model="password" placeholder="Mật khẩu" required>
+              <div ng-show="formLogin.pass.$error.required" class="badge badge-danger font-italic">
+                Nhập mật khẩu của bạn
+              </div>
+              <div ng-show="formLogin.pass.$error.minlength" class="badge badge-danger font-italic">
+                Mật khẩu phải trên 1 kí tự
+              </div>
             </div>
   
             <div class="custom-control custom-checkbox my-3">
               <input type="checkbox" class="custom-control-input" id="customCheck1">
               <label class="custom-control-label" for="customCheck1">Nhớ</label>
             </div>
-            <button class="btn-block text-uppercase btn bg-main text-light waves-effect" ng-click="login()" type="submit">Đăng nhập</button>
+            <button class="btn-block text-uppercase btn bg-main text-light waves-effect" ng-disabled="formLogin.$invalid" ng-click="login()">Đăng nhập</button>
             <br>
             <div class="alert {{ error.className }}"><p class="text-center font-weight-bold">{{ error.text }}</p></div>
           </form>
