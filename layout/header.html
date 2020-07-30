@@ -11,19 +11,19 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav mr-auto w-100">
         <li class="nav-item active">
-          <a class="nav-link  text-light" href="#/">Trang chủ <span class="sr-only">(current)</span></a>
+          <a class="nav-link  text-light" href="#/"><i class="fa fa-home"></i> Trang chủ <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  text-light" href="#/contact">Liên hệ</a>
+          <a class="nav-link  text-light" href="#/contact"><i class="fa fa-phone"></i> Liên hệ</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  text-light" href="#/feedback">Góp ý</a>
+          <a class="nav-link  text-light" href="#/feedback"><i class="fa fa-comment"></i> Góp ý</a>
         </li>
         <li ng-show="userNameLoginSuccess" class="nav-item">
-          <a class="nav-link  text-light" href="#/question">Hỏi đáp</a>
+          <a class="nav-link  text-light" href="#/question"><i class="fa fa-question"></i> Hỏi đáp</a>
         </li>
         <li ng-show="userNameLoginSuccess" class="nav-item">
-          <a class="nav-link  text-light" href="#/category/1">Danh mục</a>
+          <a class="nav-link  text-light" href="#/category/1"><i class="fa fa-bars"></i> Danh mục</a>
         </li>
         <li class="nav-item dropdown ml-auto">
           <a class="nav-link text-light dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -31,9 +31,13 @@
             {{ userNameLoginSuccess.length > 0 ? userNameLoginSuccess: 'Tài khoản' }}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <!-- DON'T LOGIN -->
             <a ng-show="!userNameLoginSuccess" class="dropdown-item" href="#/login">Đăng nhập</a>
+            <a ng-show="!userNameLoginSuccess" class="dropdown-item" href="#/forgot-pass">Quên mật khẩu</a>
+
             <a ng-show="!userNameLoginSuccess" class="dropdown-item" href="#/register">Đăng ký thành viên</a>
-            <div ng-show="!userNameLoginSuccess" class="dropdown-divider"></div>
+            
+            <!-- LOGIN SUCCESS -->
             <a ng-show="userNameLoginSuccess" style="cursor: pointer;" class="dropdown-item" ng-click="logout()">Đăng xuất</a>
             <a ng-show="userNameLoginSuccess" class="dropdown-item" href="#/change-password">Đổi mật khẩu</a>
             <a ng-show="userNameLoginSuccess" class="dropdown-item" href="#/update-user">Cập nhật hồ sơ</a>

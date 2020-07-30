@@ -9,7 +9,7 @@
             <div class="row">
                 <!--Grid column-->
                 <div class="col-md-12 mb-md-0 mb-5">
-                    <form class="form-signin validation" novalidate>
+                    <form class="form-signin validation" name="formFeedBack" novalidate>
 
                         <!--Grid row-->
                         <div class="row">
@@ -18,7 +18,15 @@
                             <div class="col-md-6">
                                 <div class="md-form mb-0">
                                     <label for="name" class="">Tên của bạn</label>
-                                    <input type="text" id="name" name="name" class="form-control">
+                                    <input type="text" id="name" name="name" ng-model="name" minLength="3" class="form-control" required>
+                                </div>
+                                <div ng-show="formFeedBack.name.$error.required && !formFeedBack.name.$untouched"
+                                class="badge badge-danger font-italic">
+                                    Nhập tên của của bạn
+                                </div>
+                                <div ng-show="formFeedBack.name.$error.minlength && !formFeedBack.name.$untouched"
+                                    class="badge badge-danger font-italic">
+                                        Tên phải trên 3 kí tự
                                 </div>
                             </div>
                             <!--Grid column-->
@@ -27,7 +35,15 @@
                             <div class="col-md-6">
                                 <div class="md-form mb-0">
                                     <label for="email" class="">Địa chỉ email của bạn</label>
-                                    <input type="text" id="email" name="email" class="form-control">
+                                    <input type="text" id="email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" class="form-control" ng-model="email" name="email" class="form-control" required>
+                                </div>
+                                <div ng-show="formFeedBack.email.$error.required && !formFeedBack.email.$untouched"
+                                class="badge badge-danger font-italic">
+                                    Nhập email đăng kí tài khoản của bạn
+                                </div>
+                                <div ng-show="formFeedBack.email.$error.pattern && !formFeedBack.email.$untouched"
+                                class="badge badge-danger font-italic">
+                                    Vui lòng nhập đúng định dạng email
                                 </div>
                             </div>
                             <!--Grid column-->
@@ -40,7 +56,15 @@
                             <div class="col-md-12">
                                 <div class="md-form mb-0">
                                     <label for="title" class="">Tiêu đề</label>
-                                    <input type="text" id="title" name="title" class="form-control">
+                                    <input type="text" id="title" name="title" minLength="5" ng-model="title" class="form-control" required>
+                                    <div ng-show="formFeedBack.title.$error.required && !formFeedBack.title.$untouched"
+                                    class="badge badge-danger font-italic">
+                                        Nhập tên của của bạn
+                                    </div>
+                                    <div ng-show="formFeedBack.title.$error.minlength && !formFeedBack.title.$untouched"
+                                    class="badge badge-danger font-italic">
+                                        Tiêu đề phải trên 5 kí tự
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -54,20 +78,29 @@
 
                                 <div class="md-form">
                                     <label for="message">Nội dung</label>
-                                    <textarea type="text" id="message" name="message" rows="2"
-                                        class="form-control md-textarea"></textarea>
+                                    <textarea type="text" id="message" name="message" ng-model="message" minLength="20" rows="2"
+                                        class="form-control md-textarea" required></textarea>
+                                    <div ng-show="formFeedBack.message.$error.required && !formFeedBack.message.$untouched"
+                                    class="badge badge-danger font-italic">
+                                        Nhập nội dung bạn muốn góp ý
+                                    </div>
+                                    <div ng-show="formFeedBack.message.$error.minlength && !formFeedBack.message.$untouched"
+                                    class="badge badge-danger font-italic">
+                                        Nội dung phải trên 20 kí tự
+                                    </div>
                                 </div>
 
                             </div>
                         </div>
                         <!--Grid row-->
-
+                        <br>
+                        <button class="btn bg-main waves-effect text-light float-right" ng-click="sendFeedBack()" ng-disabled="formFeedBack.$invalid">Gửi phản hồi</button>
+                        
                     </form>
-
-                    <div class="text-center mt-3 text-md-left">
-                        <button class="btn bg-main waves-effect text-light float-right">Gửi phản hồi</button>
+                    <br><br>
+                    <div class="alert {{ error.className }}">
+                        <p class="text-center font-weight-bold">{{ error.text }}</p>
                     </div>
-                    <div class="status"></div>
                 </div>
                 <!--Grid column-->
 

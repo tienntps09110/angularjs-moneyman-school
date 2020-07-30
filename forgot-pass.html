@@ -1,0 +1,46 @@
+<div ng-controller="forgot-pass" class="row">
+  <div class="col-sm-9 col-md-7 col-lg-7 mx-auto">
+    <div class="card card-signin mb-5">
+      <div class="card-body">
+        <h4 class="card-title text-center alert bg-main text-light">Quên mật khẩu</h4>
+        <small>TK : tiennt EMAIL: tien@fpt.edu.vn</small>
+        <br>
+        <form class="form-signin validation" name="formForgotPass" novalidate>
+          <div class="form-label-group">
+            <input type="Username" ng-pattern="/^[a-zA-Z0-9-]*$/" id="inputUsername" name="user_name"
+              class="form-control" ng-model="user_name" placeholder="Tài khoản" required autofocus>
+            <div ng-show="formForgotPass.user_name.$error.required && !formForgotPass.user_name.$untouched"
+              class="badge badge-danger font-italic">
+              Nhập tài khoản của bạn
+            </div>
+            <div ng-show="formForgotPass.user_name.$error.pattern && !formForgotPass.user_name.$untouched"
+              class="badge badge-danger font-italic">
+              Vui lòng nhập đúng định dạng tài khoản
+            </div>
+          </div>
+          <br>
+          <div class="form-label-group">
+            <input type="email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" id="email" name="email"
+              class="form-control" ng-model="email" placeholder="Địa chỉ email" required autofocus>
+            <div ng-show="formForgotPass.email.$error.required && !formForgotPass.email.$untouched"
+              class="badge badge-danger font-italic">
+              Nhập email đăng kí tài khoản của bạn
+            </div>
+            <div ng-show="formForgotPass.email.$error.pattern && !formForgotPass.email.$untouched"
+              class="badge badge-danger font-italic">
+              Vui lòng nhập đúng định dạng email
+            </div>
+          </div>
+          <br>
+          <button class="btn-block text-uppercase btn bg-main text-light waves-effect"
+            ng-disabled="formForgotPass.$invalid" ng-click="getPass()" type="submit">Lấy lại mật khẩu</button>
+          <br>
+          <a href="#/login" class="">Đăng nhập ?</a>
+          <div class="alert {{ error.className }}">
+            <p class="text-center font-weight-bold">{{ error.text }}</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div><br><br><br><br><br><br>

@@ -22,6 +22,7 @@ app.controller('change-password', ($scope, $rootScope)=> {
             $scope.notification('Xác nhận mật khẩu không chính xác');
             return;
         }
+        Students[localStorage.getItem('index_user')].password = $scope.newPassword;
         $scope.oldPassword = '';
         $scope.newPassword = '';
         $scope.confirmPassword = '';

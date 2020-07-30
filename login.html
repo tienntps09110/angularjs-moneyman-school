@@ -3,6 +3,8 @@
       <div class="card card-signin mb-5">
         <div class="card-body">
           <h4 class="card-title text-center alert bg-main text-light">Đăng nhập</h4>
+          <small>TK : tiennt PASS: 1</small>
+          <br>
           <form class="form-signin validation" name="formLogin" novalidate>
             <div class="form-label-group">
               <input type="Username" ng-pattern="/^[a-zA-Z0-9-]*$/" id="inputUsername" name="user_name" class="form-control" ng-model="user_name" placeholder="Tài khoản" required autofocus>
@@ -30,6 +32,7 @@
             </div>
             <button class="btn-block text-uppercase btn bg-main text-light waves-effect" ng-disabled="formLogin.$invalid" ng-click="login()" type="submit">Đăng nhập</button>
             <br>
+            <a href="#/forgot-pass" class="">Quên mật khẩu ?</a>
             <div class="alert {{ error.className }}"><p class="text-center font-weight-bold">{{ error.text }}</p></div>
           </form>
         </div>

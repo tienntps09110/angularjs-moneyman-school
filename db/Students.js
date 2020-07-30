@@ -33,7 +33,7 @@
         "username": "tiennt",
         "password": "1",
         "fullname": "Nguyễn Tấn Tiền",
-        "email": "nopt@fpt.edu.vn",
+        "email": "tien@fpt.edu.vn",
         "gender": "false",
         "birthday": "1993-05-15",
         "schoolfee": "2000000",
