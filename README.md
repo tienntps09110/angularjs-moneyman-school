@@ -1,3 +1,3 @@
 # angularjs-assginment
 
-LIVE DEMO: https://tiennt-angularjs-test.vercel.app/
+LIVE DEMO: https://tiennt-moneyman-angularjs.vercel.app/
